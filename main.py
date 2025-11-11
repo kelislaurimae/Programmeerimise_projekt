@@ -1,5 +1,6 @@
 import pygame
 import sys
+from kysimused import kysimused 
 
 # Initsialiseerime Pygame
 pygame.init()
@@ -13,13 +14,6 @@ pygame.display.set_caption("Terminimäng")
 font = pygame.font.Font(None, 50)
 valge = (255, 255, 255)
 must = (0, 0, 0)
-
-# Küsimused ja vastused
-küsimused = [
-    ("Mis on Python?", "programmeerimiskeel"),
-    ("Mis on HTML?", "märgistuskeel"),
-    ("Mis on CSS?", "stiilileht")
-]
 
 punktid = 0
 praegune = 0
@@ -36,11 +30,11 @@ while True:
         elif sündmus.type == pygame.KEYDOWN:
             if sündmus.key == pygame.K_RETURN:
                 # Kontrollime vastust
-                if sisestus.lower() == küsimused[praegune][1]:
+                if sisestus.lower().strip() == kysimused[praegune]['valikud'][kysimused[praegune]['vastus']].lower().strip():
                     punktid += 1
                 sisestus = ""
                 praegune += 1
-                if praegune >= len(küsimused):
+                if praegune >= len(kysimused):
                     # Mäng läbi
                     ekraan.fill(valge)
                     lõpp_tekst = font.render(f"Mäng läbi! Punktid: {punktid}", True, must)
@@ -55,7 +49,7 @@ while True:
                 sisestus += sündmus.unicode
 
     # Kuvame küsimuse ja sisestuse
-    küsimus_tekst = font.render(küsimused[praegune][0], True, must)
+    küsimus_tekst = font.render(kysimused[praegune]['termin'], True, must)
     ekraan.blit(küsimus_tekst, (50, 100))
 
     sisestus_tekst = font.render(sisestus, True, must)
