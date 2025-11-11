@@ -4,7 +4,7 @@
 
 ## Siis kirjuta py -m venv venv
 
-## Ctrl + Shift + p, avanenud aknasse kirjuta Python: Select Interpreter (vali kus on öeldus venv)
+## Ctrl + Shift + p, avanenud aknasse kirjuta Python: Select Interpreter (vali kus on öeldud venv)
 
 ## Terminali käsk .\venv\Scripts\activate
 
