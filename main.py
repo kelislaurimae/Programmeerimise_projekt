@@ -2,7 +2,7 @@ import pygame
 import sys
 from kysimused import kysimused 
 
-# Initsialiseerime Pygame
+# Pygame initsialiseerimine
 pygame.init()
 
 # Ekraani seaded
@@ -49,15 +49,15 @@ while True:
 
     küsimus = kysimused[praegune]
 
-    # Kuvame küsimuse
+    # Küsimuse kuvamine
     termin_tekst = suur_font.render(küsimus["termin"], True, must)
     ekraan.blit(termin_tekst, (laius//2 - termin_tekst.get_width()//2, 100))
 
-    # Kuvame punktid
+    # Punktide kuvamine
     punktid_tekst = font.render(f"Punktid: {punktid}", True, must)
     ekraan.blit(punktid_tekst, (50, 30))
 
-    # Kuvame valikvastused
+    # Valikvastuste kuvamine
     nupu_laius, nupu_kõrgus = 600, 60
     vahe = 20
     alg_y = 250
@@ -69,7 +69,7 @@ while True:
         joonista_nupp(valik, x, y, nupu_laius, nupu_kõrgus)
         nupud.append(pygame.Rect(x, y, nupu_laius, nupu_kõrgus))
 
-    # Kuvame tagasiside (nt "Õige!" või "Vale!")
+    # Tagasiside kuvamine
     if näita_tagasisidet:
         tagasiside_tekst = font.render(tagasiside, True, must)
         ekraan.blit(tagasiside_tekst, (laius//2 - tagasiside_tekst.get_width()//2, kõrgus - 100))
