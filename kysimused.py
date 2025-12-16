@@ -38,7 +38,7 @@ kysimused = [
     {
         "termin": "EAP",
         "valikud": [
-            "Euroopa ainepunkt, mõõdab õppetöö mahtu (1 EAP ≈ 26 tundi tudengi tööd)",
+            "Euroopa ainepunkt, mõõdab õppetöö mahtu (1 EAP on ligikaudu 26 tundi tudengi tööd)",
             "Ülikooli hinnang tudengi eksamitulemustele",
             "Elektrooniline arvestusprotokoll õppeinfosüsteemis"
         ],
