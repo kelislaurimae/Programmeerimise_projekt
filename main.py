@@ -10,13 +10,11 @@ pygame.init()
 BAAS_LAIUS = 800
 BAAS_KÕRGUS = 600
 
-aken = pygame.display.set_mode(
-    (BAAS_LAIUS, BAAS_KÕRGUS), pygame.RESIZABLE
-)
+aken = pygame.display.set_mode((BAAS_LAIUS, BAAS_KÕRGUS), pygame.RESIZABLE)
 pygame.display.set_caption("Terminimäng")
 
-# Virtuaalne ekraan (joonistame ALATI siia)
 ekraan = pygame.Surface((BAAS_LAIUS, BAAS_KÕRGUS))
+
 
 # ---------------- VÄRVID ----------------
 TAUST = pygame.image.load("keyboard.jpg").convert_alpha()
@@ -26,9 +24,11 @@ NUPP = (95, 160, 210)
 NUPP2 = (70, 140, 190)
 MUST_TAUST = (0, 0, 0)
 
+
 # ---------------- FONDID ----------------
 font = pygame.font.Font(None, 32)
 suur_font = pygame.font.Font(None, 50)
+
 
 # ---------------- MÄNGU MUUTUJAD ----------------
 punktid = 0
@@ -38,15 +38,6 @@ näita_tagasisidet = False
 tagasiside_hetk = 0
 kell = pygame.time.Clock()
 
-# ---------------- SEGAB VASTUSED ----------------
-for k in kysimused:
-    valikud = k["valikud"]
-    õige_vastus = valikud[k["vastus"]]
-
-    random.shuffle(valikud)
-
-    # uuenda õige vastuse indeks pärast segamist
-    k["vastus"] = valikud.index(õige_vastus)
 
 # ---------------- ABIFUNKTSIOONID ----------------
 def murra_tekst(tekst, font, max_laius):
@@ -83,13 +74,11 @@ def joonista_nupp(tekst, rect, hover=False):
 
     for rida in read:
         pind = font.render(rida.strip(), True, TEKSTVÄRV)
-        ekraan.blit(
-            pind,
-            (rect.centerx - pind.get_width() // 2, y)
-        )
+        ekraan.blit(pind,(rect.centerx - pind.get_width() // 2, y))
         y += font.get_height() + 5
 
-# ---------------- RANDOMIZER ----------------
+
+# ---------------- SEGAB VASTUSED ----------------
 
 random.shuffle(kysimused)
 
@@ -98,10 +87,11 @@ for k in kysimused:
     random.shuffle(valikud)
     k["valikud"] = [v for _, v in valikud]
     k["vastus"] = [i for i, (orig_i, _) in enumerate(valikud)
-                   if orig_i == k["vastus"]][0]
+    if orig_i == k["vastus"]][0]
 
 
 # ---------------- PEAMINE TSÜKKEL ----------------
+
 while True:
 
     ekraan.blit(taust, (0, 0))
@@ -110,10 +100,7 @@ while True:
     akna_laius, akna_kõrgus = aken.get_size()
 
     # ---- ÜHTLANE SKALEERIMINE ----
-    scale = min(
-        akna_laius / BAAS_LAIUS,
-        akna_kõrgus / BAAS_KÕRGUS
-    )
+    scale = min(akna_laius / BAAS_LAIUS,akna_kõrgus / BAAS_KÕRGUS)
 
     uus_laius = int(BAAS_LAIUS * scale)
     uus_kõrgus = int(BAAS_KÕRGUS * scale)
@@ -128,24 +115,14 @@ while True:
 
     # ---- LÕPP ----
     if praegune >= len(kysimused):
-        lõpptekst = suur_font.render(
-            f"Mäng läbi! Punktid: {punktid}/{len(kysimused)}",
-            True, TEKSTVÄRV
-        )
-        ekraan.blit(
-            lõpptekst,
-            (BAAS_LAIUS // 2 - lõpptekst.get_width() // 2,
-             BAAS_KÕRGUS // 2)
-        )
+        lõpptekst = suur_font.render(f"Mäng läbi! Punktid: {punktid}/{len(kysimused)}", True, TEKSTVÄRV)
+        ekraan.blit(lõpptekst, (BAAS_LAIUS // 2 - lõpptekst.get_width() // 2, BAAS_KÕRGUS // 2))
     else:
         küsimus = kysimused[praegune]
 
         # Küsimus
         pealkiri = suur_font.render(küsimus["termin"], True, TEKSTVÄRV)
-        ekraan.blit(
-            pealkiri,
-            (BAAS_LAIUS // 2 - pealkiri.get_width() // 2, 100)
-        )
+        ekraan.blit(pealkiri, (BAAS_LAIUS // 2 - pealkiri.get_width() // 2, 100))
 
         # Punktid
         punktid_txt = font.render(f"Punktid: {punktid}", True, TEKSTVÄRV)
@@ -171,19 +148,15 @@ while True:
         # Tagasiside
         if näita_tagasisidet:
             tekst = font.render(tagasiside, True, TEKSTVÄRV)
-            ekraan.blit(
-                tekst,
-                (BAAS_LAIUS // 2 - tekst.get_width() // 2,
-                 BAAS_KÕRGUS - 60)
-            )
+            ekraan.blit(tekst, (BAAS_LAIUS // 2 - tekst.get_width() // 2, BAAS_KÕRGUS - 60))
+
             if pygame.time.get_ticks() - tagasiside_hetk > 1000:
                 näita_tagasisidet = False
                 praegune += 1
 
+
     # ---- JOONISTAB AKNASSE (LETTERBOX) ----
-    skaleeritud = pygame.transform.smoothscale(
-        ekraan, (uus_laius, uus_kõrgus)
-    )
+    skaleeritud = pygame.transform.smoothscale(ekraan, (uus_laius, uus_kõrgus))
 
     aken.fill(MUST_TAUST)
     aken.blit(skaleeritud, (offset_x, offset_y))
