@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 from kysimused import kysimused
 import random
 
@@ -37,6 +38,15 @@ näita_tagasisidet = False
 tagasiside_hetk = 0
 kell = pygame.time.Clock()
 
+# ---------------- SEGAB VASTUSED ----------------
+for k in kysimused:
+    valikud = k["valikud"]
+    õige_vastus = valikud[k["vastus"]]
+
+    random.shuffle(valikud)
+
+    # uuenda õige vastuse indeks pärast segamist
+    k["vastus"] = valikud.index(õige_vastus)
 
 # ---------------- ABIFUNKTSIOONID ----------------
 def murra_tekst(tekst, font, max_laius):
@@ -170,7 +180,7 @@ while True:
                 näita_tagasisidet = False
                 praegune += 1
 
-    # ---- JOONISTA AKNASSE (LETTERBOX) ----
+    # ---- JOONISTAB AKNASSE (LETTERBOX) ----
     skaleeritud = pygame.transform.smoothscale(
         ekraan, (uus_laius, uus_kõrgus)
     )
