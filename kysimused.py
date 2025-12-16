@@ -79,5 +79,32 @@ kysimused = [
             "Praktikakoht ettevõttes"
         ],
         "vastus": 0
+    },
+    {
+        "termin": "DNS",
+        "valikud": [
+            "Teenus, mis teisendab domeeninimed IP-aadressideks",
+            "Krüpteerimisalgoritm, mis kaitseb paroole",
+            "Operatsioonisüsteemi tuum"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "SQL",
+        "valikud": [
+            "Keel, mida kasutatakse andmebaaside päringute tegemiseks",
+            "Operatsioonisüsteem serverite haldamiseks",
+            "Protokoll, mis edastab e-kirju"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Cloud Computing",
+        "valikud": [
+            "Teenuste pakkumine interneti kaudu (nt salvestus, arvutusvõimsus)",
+            "Füüsiline server, mis asub kodus",
+            "Tarkvara, mis loob graafikat"
+        ],
+        "vastus": 0
     }
 ]

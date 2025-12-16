@@ -2,7 +2,6 @@ import pygame
 import sys
 import random
 from kysimused import kysimused
-import random
 
 pygame.init()
 
