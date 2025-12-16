@@ -1,6 +1,7 @@
 import pygame
 import sys
 from kysimused import kysimused
+import random
 
 pygame.init()
 
@@ -77,6 +78,17 @@ def joonista_nupp(tekst, rect, hover=False):
             (rect.centerx - pind.get_width() // 2, y)
         )
         y += font.get_height() + 5
+
+# ---------------- RANDOMIZER ----------------
+
+random.shuffle(kysimused)
+
+for k in kysimused:
+    valikud = list(enumerate(k["valikud"]))
+    random.shuffle(valikud)
+    k["valikud"] = [v for _, v in valikud]
+    k["vastus"] = [i for i, (orig_i, _) in enumerate(valikud)
+                   if orig_i == k["vastus"]][0]
 
 
 # ---------------- PEAMINE TSÜKKEL ----------------
