@@ -1,13 +1,7 @@
 import pygame
 import sys
-<<<<<<< HEAD
 from kysimused import kysimused
 
-=======
-from kysimused import kysimused 
-
-# Pygame initsialiseerimine
->>>>>>> fc61666c58f4dd497f8b839193138527b8e992ce
 pygame.init()
 
 # ---------------- BAASRESOLUTSIOON ----------------
@@ -19,7 +13,6 @@ aken = pygame.display.set_mode(
 )
 pygame.display.set_caption("Terminimäng")
 
-<<<<<<< HEAD
 # Virtuaalne ekraan (joonistame ALATI siia)
 ekraan = pygame.Surface((BAAS_LAIUS, BAAS_KÕRGUS))
 
@@ -30,14 +23,6 @@ TEKSTVÄRV = (255, 255, 255)
 NUPP = (95, 160, 210)
 NUPP2 = (70, 140, 190)
 MUST_TAUST = (0, 0, 0)
-=======
-# Fondid ja värvid
-font = pygame.font.Font(None, 32)
-suur_font = pygame.font.Font(None, 50)
-valge = (255, 255, 255)
-must = (0, 0, 0)
-hall = (200, 200, 200)
->>>>>>> fc61666c58f4dd497f8b839193138527b8e992ce
 
 # ---------------- FONDID ----------------
 font = pygame.font.Font(None, 32)
@@ -47,25 +32,9 @@ suur_font = pygame.font.Font(None, 50)
 punktid = 0
 praegune = 0
 tagasiside = ""
-<<<<<<< HEAD
 näita_tagasisidet = False
 tagasiside_hetk = 0
 kell = pygame.time.Clock()
-=======
-kell = pygame.time.Clock()
-näita_tagasisidet = False
-tagasiside_hetk = 0
-
-def joonista_nupp(tekst, x, y, laius, kõrgus, aktiivne=False):
-    värv = hall if not aktiivne else (180, 180, 180)
-    pygame.draw.rect(ekraan, värv, (x, y, laius, kõrgus))
-    nupp_tekst = font.render(tekst, True, must)
-    ekraan.blit(
-        nupp_tekst,
-        (x + (laius - nupp_tekst.get_width()) // 2,
-         y + (kõrgus - nupp_tekst.get_height()) // 2)
-    )
->>>>>>> fc61666c58f4dd497f8b839193138527b8e992ce
 
 
 # ---------------- ABIFUNKTSIOONID ----------------
@@ -113,7 +82,6 @@ def joonista_nupp(tekst, rect, hover=False):
 # ---------------- PEAMINE TSÜKKEL ----------------
 while True:
 
-<<<<<<< HEAD
     ekraan.blit(taust, (0, 0))
 
     # ---- AKNA SUURUS ----
@@ -200,56 +168,10 @@ while True:
     pygame.display.flip()
 
     # ---- SÜNDMUSED ----
-=======
-    # Kui küsimused on läbi
-    if praegune >= len(kysimused):
-        lõpp_tekst = suur_font.render(f"Mäng läbi! Punktid: {punktid}/{len(kysimused)}", True, must)
-        ekraan.blit(lõpp_tekst, (laius//2 - lõpp_tekst.get_width()//2, kõrgus//2))
-        pygame.display.flip()
-        pygame.time.wait(3000)
-        pygame.quit()
-        sys.exit()
-
-    küsimus = kysimused[praegune]
-
-    # Küsimuse kuvamine
-    termin_tekst = suur_font.render(küsimus["termin"], True, must)
-    ekraan.blit(termin_tekst, (laius//2 - termin_tekst.get_width()//2, 100))
-
-    # Punktide kuvamine
-    punktid_tekst = font.render(f"Punktid: {punktid}", True, must)
-    ekraan.blit(punktid_tekst, (50, 30))
-
-    # Valikvastuste kuvamine
-    nupu_laius, nupu_kõrgus = 600, 60
-    vahe = 20
-    alg_y = 250
-    nupud = []
-
-    for i, valik in enumerate(küsimus["valikud"]):
-        x = (laius - nupu_laius) // 2
-        y = alg_y + i * (nupu_kõrgus + vahe)
-        joonista_nupp(valik, x, y, nupu_laius, nupu_kõrgus)
-        nupud.append(pygame.Rect(x, y, nupu_laius, nupu_kõrgus))
-
-    # Tagasiside kuvamine
-    if näita_tagasisidet:
-        tagasiside_tekst = font.render(tagasiside, True, must)
-        ekraan.blit(tagasiside_tekst, (laius//2 - tagasiside_tekst.get_width()//2, kõrgus - 100))
-        # Kui on möödunud 1 sekund, liigume edasi
-        if pygame.time.get_ticks() - tagasiside_hetk > 1000:
-            näita_tagasisidet = False
-            praegune += 1
-
-    pygame.display.flip()
-
-    # Sündmused
->>>>>>> fc61666c58f4dd497f8b839193138527b8e992ce
     for sündmus in pygame.event.get():
         if sündmus.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-<<<<<<< HEAD
 
         if sündmus.type == pygame.MOUSEBUTTONDOWN and not näita_tagasisidet:
             mx = int((sündmus.pos[0] - offset_x) / scale)
@@ -266,18 +188,3 @@ while True:
                     tagasiside_hetk = pygame.time.get_ticks()
 
     kell.tick(60)
-=======
-        elif sündmus.type == pygame.MOUSEBUTTONDOWN and not näita_tagasisidet:
-            hiir_x, hiir_y = sündmus.pos
-            for i, nupp in enumerate(nupud):
-                if nupp.collidepoint(hiir_x, hiir_y):
-                    if i == küsimus["vastus"]:
-                        punktid += 1
-                        tagasiside = "Õige!"
-                    else:
-                        tagasiside = "Vale!"
-                    näita_tagasisidet = True
-                    tagasiside_hetk = pygame.time.get_ticks()
-
-    kell.tick(60)
->>>>>>> fc61666c58f4dd497f8b839193138527b8e992ce
