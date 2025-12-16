@@ -90,11 +90,29 @@ kysimused = [
         "vastus": 0
     },
     {
+        "termin": "DNS",
+        "valikud": [
+            "Teenus, mis teisendab domeeninimed IP-aadressideks",
+            "Krüpteerimisalgoritm, mis kaitseb paroole",
+            "Operatsioonisüsteemi tuum"
+        ],
+        "vastus": 0
+    },
+    {
         "termin": "Repository (repo)",
         "valikud": [
             "Koht, kus hoitakse ja hallatakse projekti lähtekoodi",
             "Programm koodi automaatseks parandamiseks",
             "Andmebaas ainult piltide jaoks"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "SQL",
+        "valikud": [
+            "Keel, mida kasutatakse andmebaaside päringute tegemiseks",
+            "Operatsioonisüsteem serverite haldamiseks",
+            "Protokoll, mis edastab e-kirju"
         ],
         "vastus": 0
     },
@@ -185,6 +203,15 @@ kysimused = [
             "Tartu Ülikooli instituut, kus õpetatakse ja uuritakse arvutiteadust",
             "Tudengiorganisatsioon, mis korraldab pidusid",
             "Riiklik IT-ettevõte"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Cloud Computing",
+        "valikud": [
+            "Teenuste pakkumine interneti kaudu (nt salvestus, arvutusvõimsus)",
+            "Füüsiline server, mis asub kodus",
+            "Tarkvara, mis loob graafikat"
         ],
         "vastus": 0
     }

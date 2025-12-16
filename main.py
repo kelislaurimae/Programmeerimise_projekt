@@ -9,13 +9,11 @@ pygame.init()
 BAAS_LAIUS = 800
 BAAS_KÕRGUS = 600
 
-aken = pygame.display.set_mode(
-    (BAAS_LAIUS, BAAS_KÕRGUS), pygame.RESIZABLE
-)
+aken = pygame.display.set_mode((BAAS_LAIUS, BAAS_KÕRGUS), pygame.RESIZABLE)
 pygame.display.set_caption("Terminimäng")
 
-# Virtuaalne ekraan (joonistame ALATI siia)
 ekraan = pygame.Surface((BAAS_LAIUS, BAAS_KÕRGUS))
+
 
 # ---------------- VÄRVID ----------------
 TAUST = pygame.image.load("keyboard.jpg").convert_alpha()
@@ -25,9 +23,11 @@ NUPP = (95, 160, 210)
 NUPP2 = (70, 140, 190)
 MUST_TAUST = (0, 0, 0)
 
+
 # ---------------- FONDID ----------------
 font = pygame.font.Font(None, 32)
 suur_font = pygame.font.Font(None, 50)
+
 
 # ---------------- MÄNGU MUUTUJAD ----------------
 punktid = 0
@@ -90,10 +90,7 @@ def joonista_nupp(tekst, rect, hover=False):
 
     for rida in read:
         pind = font.render(rida.strip(), True, TEKSTVÄRV)
-        ekraan.blit(
-            pind,
-            (rect.centerx - pind.get_width() // 2, y)
-        )
+        ekraan.blit(pind,(rect.centerx - pind.get_width() // 2, y))
         y += font.get_height() + 5
 
 def joonista_suur_nupp(tekst, rect, hover=False):   # <<< MUUTUS
@@ -116,7 +113,20 @@ def reset_mäng():
     mäng_käib = False
     sega_vastused()
 
+# ---------------- SEGAB VASTUSED ----------------
+
+random.shuffle(kysimused)
+
+for k in kysimused:
+    valikud = list(enumerate(k["valikud"]))
+    random.shuffle(valikud)
+    k["valikud"] = [v for _, v in valikud]
+    k["vastus"] = [i for i, (orig_i, _) in enumerate(valikud)
+    if orig_i == k["vastus"]][0]
+
+
 # ---------------- PEAMINE TSÜKKEL ----------------
+
 while True:
     # ---- TAUST ----  
     ekraan.blit(taust, (0, 0))
@@ -125,10 +135,7 @@ while True:
     akna_laius, akna_kõrgus = aken.get_size()
 
     # ---- ÜHTLANE SKALEERIMINE ----
-    scale = min(
-        akna_laius / BAAS_LAIUS,
-        akna_kõrgus / BAAS_KÕRGUS
-    )
+    scale = min(akna_laius / BAAS_LAIUS,akna_kõrgus / BAAS_KÕRGUS)
 
     uus_laius = int(BAAS_LAIUS * scale)
     uus_kõrgus = int(BAAS_KÕRGUS * scale)
@@ -192,10 +199,7 @@ while True:
         küsimus = kysimused[praegune]
 
         pealkiri = suur_font.render(küsimus["termin"], True, TEKSTVÄRV)
-        ekraan.blit(
-            pealkiri,
-            (BAAS_LAIUS // 2 - pealkiri.get_width() // 2, 100)
-        )
+        ekraan.blit(pealkiri, (BAAS_LAIUS // 2 - pealkiri.get_width() // 2, 100))
 
         punktid_txt = font.render(f"Punktid: {punktid}", True, TEKSTVÄRV)
         ekraan.blit(punktid_txt, (30, 20))
