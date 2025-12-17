@@ -81,6 +81,15 @@ kysimused = [
         "vastus": 0
     },
     {
+        "termin": "Algoritm",
+        "valikud": [
+            "Samm-sammuline juhis probleemi lahendamiseks",
+            "Arvuti protsessor",
+            "Interneti kiiruse mõõtühik"
+        ],
+        "vastus": 0
+    },
+    {
         "termin": "DNS",
         "valikud": [
             "Teenus, mis teisendab domeeninimed IP-aadressideks",
@@ -90,11 +99,110 @@ kysimused = [
         "vastus": 0
     },
     {
+        "termin": "Repository (repo)",
+        "valikud": [
+            "Koht, kus hoitakse ja hallatakse projekti lähtekoodi",
+            "Programm koodi automaatseks parandamiseks",
+            "Andmebaas ainult piltide jaoks"
+        ],
+        "vastus": 0
+    },
+    {
         "termin": "SQL",
         "valikud": [
             "Keel, mida kasutatakse andmebaaside päringute tegemiseks",
             "Operatsioonisüsteem serverite haldamiseks",
             "Protokoll, mis edastab e-kirju"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Commit",
+        "valikud": [
+            "Muudatuste salvestamine Git’i ajaloos",
+            "Koodi kustutamine projektist",
+            "Programmi käivitamine"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "API",
+        "valikud": [
+            "Liides, mis võimaldab programmidel omavahel suhelda",
+            "Programmeerimiskeel veebilehtede loomiseks",
+            "Arvuti riistvara osa"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Bug",
+        "valikud": [
+            "Viga programmis",
+            "Turvaelement operatsioonisüsteemis",
+            "Koodi kommentaar"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Loeng",
+        "valikud": [
+            "Õppetund, kus õppejõud selgitab teemat suuremale grupile",
+            "Iseseisev eksam kodus",
+            "Praktikumi arvestus"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Praktikum",
+        "valikud": [
+            "Tund, kus tehakse praktilisi ülesandeid",
+            "Õppeaine lõputöö",
+            "Õppeinfosüsteem"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Arvestus",
+        "valikud": [
+            "Õppeaine läbimise vorm, kus hinnatakse kas “arvestatud” või “mittearvestatud”",
+            "Raha ülekandmine pangas",
+            "Loengu kohaloleku kontroll"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "ÕIS",
+        "valikud": [
+            "Õppeinfosüsteem, kus hallatakse aineid, hindeid ja registreerimist",
+            "Tudengite suhtlusäpp",
+            "Programmeerimiskeskkond"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Moodle",
+        "valikud": [
+            "Õppekeskkond, kus jagatakse materjale, esitatakse töid ja tehakse teste",
+            "Tudengite suhtlusäpp reaalajas vestlemiseks",
+            "Programmeerimiskeel veebirakenduste loomiseks"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "Zulip",
+        "valikud": [
+            "Suhtlusplatvorm, kus arutelud on jaotatud teemade ja kanalite kaupa",
+            "Versioonihaldussüsteem koodi haldamiseks",
+            "Videoloengute salvestamise tarkvara"
+        ],
+        "vastus": 0
+    },
+    {
+        "termin": "ATI",
+        "valikud": [
+            "Tartu Ülikooli instituut, kus õpetatakse ja uuritakse arvutiteadust",
+            "Tudengiorganisatsioon, mis korraldab pidusid",
+            "Riiklik IT-ettevõte"
         ],
         "vastus": 0
     },
